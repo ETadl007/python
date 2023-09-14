@@ -63,6 +63,9 @@ r = str2.find("")
 print(r)
 
 #替换字符串中的某个值
+str2 = "While there is life, there is hope"
+str2 = str2.replace("life","death")
+print(str2)
 
 
 #分割字符串
@@ -73,3 +76,8 @@ res = rip[0].replace(",",".")
 print(res)
 
 #字符串的拼接
+str3 = "hello"
+str4 = "world"
+str5 = str3 + str4
+print(str5)
+
