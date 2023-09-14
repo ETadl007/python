@@ -1,7 +1,7 @@
 #format的第一种方法
 name = '炮师傅'
 age = 18
-no = '03220843'
+no = '123456789'
 str = '我的姓名是：{},我的年龄是：{},我的学号是：{}'
 print(str.format(name,age,no))
 
