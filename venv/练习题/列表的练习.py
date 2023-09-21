@@ -1,3 +1,5 @@
+#导入copy模块
+import copy
 #1.创建一个空列表lst
 lst = []
 #2.在lst列表中依次追加10个数值(78, 93, 66, 83, 100, 95, 77, 93, 85, 98)；
@@ -53,7 +55,7 @@ print(lst2)
 
 #15.清空lst列表，将lst2列表复制给lst列表，将lst列表中第2个元素变为2，并分别输出lst列表、lst2列表全部元素。
 lst.clear()
-lst = lst2
+lst = copy.copy(lst2)
 lst[1] = 2
 print("lst列表：" ,lst)
 print("lst2列表：", lst2)
