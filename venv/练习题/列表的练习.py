@@ -41,6 +41,7 @@ print(lst.pop())
 #12.lst列表中用append()函数追加数值83，并输出。调用remove()函数删除lst列表中第一个数值83；
 lst.append(83)
 print(lst)
+lst.remove(83)
 
 #13.创建2个列表lst1和lst2，lst1中包含2个元素值：78，91，lst2中包含3个元素值：84，92，65，合并这两个列表，并输出全部元素；
 lst1 = [78,91]
