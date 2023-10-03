@@ -1,14 +1,39 @@
 import re
-def check_user(username,phone):
+def is_val_username(username):
     # 不能数字开头
     if username[0].isdigit() or len(username) < 5 and len(username) > 12:
-        return print("用户名输入有误")
+        print("用户名只能包含大小写字母和数字，且不能以数字开头")
+        return False
+    if not (5 <= len(username) <= 12):
+        print("用户名长度必须在5-12位之间")
+        return False
+    return True
+def is_val_password(password):
+    if not (6 <= len(password) <= 15):
+        print("密码长度必须在6~15位之间")
+        return False
+
+    return True
+def is_val_phone_number(phone):
     if not re.match(r'^1[3-9]\d{9}$',phone):
         return print("手机号输入有误")
+
+    return True
 def reg_user():
     username = input("请输入用户名: ").strip()
+    if not is_val_username(username) :
+        print("用户名格式不正确")
+        return None
     password = input("请输入密码: ").strip()
+    if not is_val_password(password):
+        print("密码格式不正确")
+        return None
     phone = input("请输入手机号: ").strip()
+    if not is_val_phone_number(phone):
+        print("手机号格式不正确")
+        return None
+
+
     user_info = {
         "username": username,
         "password": password,
@@ -20,6 +45,7 @@ def store_user_info(user_info):
     with open("account.txt", "a", encoding="utf-8") as f:
         f.write(str(user_info)+"\n")
         print('注册成功')
+        f.close()
     return user_info
 def register():
     user_info = reg_user()
@@ -39,6 +65,7 @@ def login():
             else:
                 print("用户名或密码错误")
                 break
+        f.close()
 def update():
     username = input("请输入用户名: ")
     old_pass = input("请输入旧密码: ")
