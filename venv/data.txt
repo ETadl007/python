@@ -1,0 +1,4 @@
+{'username': 'a123456', 'passwd': '123456', 'phone_number': '17260059416'}
+{'username': 'z123456', 'passwd': '123456', 'phone_number': '13652868561'}
+{'username': 's123456', 'passwd': '123456', 'phone_number': '13178565151'}
+{'username': 'z123123', 'passwd': '123123', 'phone_number': '17260059411'}{'username': 'admin', 'passwd': '123456', 'phone_number': '18174990393'}

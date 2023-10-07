@@ -19,6 +19,17 @@ def is_val_phone_number(phone):
         return print("手机号输入有误")
 
     return True
+
+#判断用户是否存在
+def is_user_exists(username):
+    with open("account.txt", "r") as f:
+        for line in f:
+            name = eval(line)
+            if username["username"] == name["username"]:
+                return True
+    return False
+
+#注册用户
 def reg_user():
     username = input("请输入用户名: ").strip()
     if not is_val_username(username) :
@@ -33,7 +44,6 @@ def reg_user():
         print("手机号格式不正确")
         return None
 
-
     user_info = {
         "username": username,
         "password": password,
@@ -42,11 +52,14 @@ def reg_user():
     return user_info
 
 def store_user_info(user_info):
-    with open("account.txt", "a", encoding="utf-8") as f:
-        f.write(str(user_info)+"\n")
-        print('注册成功')
-        f.close()
-    return user_info
+    if is_user_exists(user_info):
+        print("用户名已存在")
+    else:
+        with open("account.txt", "a", encoding="utf-8") as f:
+            f.write(str(user_info)+"\n")
+            print('注册成功')
+            f.close()
+        return user_info
 def register():
     user_info = reg_user()
     user = store_user_info(user_info)
@@ -89,7 +102,7 @@ def update():
         f.close()
 
 
-while  True:
+while True:
     print("0.退出\n1.选择用户注册\n2.选择用户登录\n3.修改密码")
     close = input("请输入编号: ")
     while True:
