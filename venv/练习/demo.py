@@ -76,8 +76,8 @@ def store_user_info(user_info):
 
 def register():
     user_info = reg_user()
-    user = store_user_info(user_info)
-    return user
+    store = store_user_info(user_info)
+    return store
 
 
 def login():

@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7513bc40-4ca2-4343-839d-25711dbc63a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/练习/account.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/练习/account.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/练习/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/练习/demo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -325,7 +322,7 @@
       <workItem from="1696337703107" duration="1034000" />
       <workItem from="1696339132867" duration="620000" />
       <workItem from="1696420007656" duration="154000" />
-      <workItem from="1696656021144" duration="4300000" />
+      <workItem from="1696656021144" duration="4659000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1694143299735</created>
@@ -460,7 +457,28 @@
       <option name="project" value="LOCAL" />
       <updated>1696658082336</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="first commit">
+      <created>1696660325358</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1696660325358</updated>
+    </task>
+    <task id="LOCAL-00021" summary="first commit">
+      <created>1696660374325</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1696660374325</updated>
+    </task>
+    <task id="LOCAL-00022" summary="first commit">
+      <created>1696660612517</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1696660612517</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -522,7 +540,7 @@
     <SUITE FILE_PATH="coverage/python$.coverage" NAME="列表的练习 Coverage Results" MODIFIED="1695343699176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/练习题" />
     <SUITE FILE_PATH="coverage/python$demo__1_.coverage" NAME="demo (1) Coverage Results" MODIFIED="1695871922065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/tuple" />
     <SUITE FILE_PATH="coverage/python$test.coverage" NAME="test Coverage Results" MODIFIED="1696259753014" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/练习" />
-    <SUITE FILE_PATH="coverage/python$demo__2_.coverage" NAME="demo (2) Coverage Results" MODIFIED="1696660297725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/练习" />
+    <SUITE FILE_PATH="coverage/python$demo__2_.coverage" NAME="demo (2) Coverage Results" MODIFIED="1696660542854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/练习" />
     <SUITE FILE_PATH="coverage/python$1__1_.coverage" NAME="1 (1) Coverage Results" MODIFIED="1696658444855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/python$dict_demo.coverage" NAME="dict_demo Coverage Results" MODIFIED="1695347604927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/dict" />
     <SUITE FILE_PATH="coverage/python$string_demo.coverage" NAME="string_demo Coverage Results" MODIFIED="1694739553806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
