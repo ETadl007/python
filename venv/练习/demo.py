@@ -100,10 +100,13 @@ def login_success():
             break
         elif choice == "1":
             register()
+            break
         elif choice == "2":
             login_success_update()
+            break
         else:
             print("输入错误")
+            login_success()
             break
 
 
