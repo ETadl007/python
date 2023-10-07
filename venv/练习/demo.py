@@ -14,7 +14,7 @@ def is_val_username(username):
 
 
 def is_val_password(password):
-    if not (6 <= len(password) <= 15):
+    if not (6 <= len(password) <= 15) or re.match(r'[^0-9a-zA-Z]', password):
         print("密码长度必须在6~15位之间")
         register()
         return False
