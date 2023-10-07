@@ -2,13 +2,12 @@ import re
 
 
 def is_val_username(username):
-    # 不能数字开头
-    if username[0].isdigit() or len(username) < 5 and len(username) > 12:
-        print("用户名只能包含大小写字母和数字，且不能以数字开头")
-        register()
-        return False
     if not (5 <= len(username) <= 12):
         print("用户名长度必须在5-12位之间")
+        register()
+        return False
+    if not username[0].isalpha():
+        print("用户名只能包含大小写字母和数字，且不能以数字开头")
         register()
         return False
     return True
@@ -42,8 +41,16 @@ def is_user_exists(user_val):
     return False
 
 
-# 注册用户
-def reg_user():
+def store_user_info(user_info):
+    with open("account.txt", "a", encoding="utf-8") as f:
+        f.write(str(user_info) + "\n")
+        print('注册成功')
+        f.close()
+    return False
+
+
+def register():
+    print("欢迎来到注册程序")
     username = input("请输入用户名: ").strip()
     if not is_val_username(username):
         return None
@@ -59,44 +66,49 @@ def reg_user():
         "phone": phone
     }
 
-    return user_info
-
-
-def store_user_info(user_info):
     if is_user_exists(user_info):
         print("用户名已存在")
         register()
-    else:
-        with open("account.txt", "a", encoding="utf-8") as f:
-            f.write(str(user_info) + "\n")
-            print('注册成功')
-            f.close()
-        return user_info
+        return
 
-
-def register():
-    user_info = reg_user()
     store = store_user_info(user_info)
     return store
 
 
 def login():
+    print("欢迎进入登录程序")
     username = input("请输入用户名: ")
     password = input("请输入密码: ")
     with open("account.txt", "r", encoding="utf-8") as f:
-        for line in f:
-            # 将line转换为字典
-            user_info = eval(line)
-            if user_info["username"] == username and user_info["password"] == password:
-                print("登录成功")
-                break
-            else:
-                print("用户名或密码错误")
-                break
-        f.close()
+        lines = f.readlines()
+
+    for line in lines:
+        user = eval(line)
+        if user["username"] == username and user["password"] == password:
+            print("登录成功 \n欢迎%s进入系统" % username)
+            login_success()
+            break
+    else:
+        print("用户名或密码错误")
 
 
-def update():
+def login_success():
+    print("0.退出登录\n1.返回用户注册\n2.修改密码")
+    choice = input("请输入编号: ")
+    while True:
+        if choice == "0":
+            break
+        elif choice == "1":
+            register()
+        elif choice == "2":
+            login_success_update()
+        else:
+            print("输入错误")
+            break
+
+
+def login_success_update():
+    print("欢迎进入修改密码程序")
     username = input("请输入用户名: ")
     old_pass = input("请输入旧密码: ")
     new_pass = input("请输入新密码: ")
@@ -105,10 +117,10 @@ def update():
         lines = f.readlines()
 
     for i, line in enumerate(lines):
-        user_info = eval(line)
-        if user_info["username"] == username and user_info["password"] == old_pass:
-            user_info["password"] = new_pass
-            lines[i] = str(user_info) + "\n"
+        user = eval(line)
+        if user["username"] == username and user["password"] == old_pass:
+            user["password"] = new_pass
+            lines[i] = str(user) + "\n"
             print("修改成功")
             break
     else:
@@ -120,25 +132,19 @@ def update():
 
 
 if __name__ == "__main__":
-    print("欢迎进入用户管理系统")
     while True:
-        print("0.退出\n1.选择用户注册\n2.选择用户登录\n3.修改密码")
+        print("欢迎进入用户管理系统")
+        print("0.退出\n1.选择用户注册\n2.选择用户登录")
         close = input("请输入编号: ")
         while True:
             if close == "0":
                 print("退出成功")
                 break
             elif close == "1":
-                print("欢迎进入注册程序")
-                user = register()
+                register()
                 break
             elif close == "2":
-                print("欢迎进入登录程序")
                 login()
-                break
-            elif close == "3":
-                print("欢迎进入修改密码程序")
-                update()
                 break
             else:
                 print("输入有误")
