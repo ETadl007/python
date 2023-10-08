@@ -137,15 +137,15 @@ if __name__ == "__main__":
     while True:
         print("欢迎进入用户管理系统")
         print("0.退出\n1.选择用户注册\n2.选择用户登录")
-        close = input("请输入编号: ")
+        choice = input("请输入编号: ")
         while True:
-            if close == "0":
+            if choice == "0":
                 print("退出成功")
                 break
-            elif close == "1":
+            elif choice == "1":
                 register()
                 break
-            elif close == "2":
+            elif choice == "2":
                 login()
                 break
             else:
