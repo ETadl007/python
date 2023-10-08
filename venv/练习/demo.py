@@ -92,7 +92,7 @@ def login():
         print("用户名或密码错误")
 
 
-def login_success(username):
+def login_success(cur_user):
     print("0.退出登录\n1.返回用户注册\n2.修改密码")
     choice = input("请输入编号: ")
     while True:
@@ -102,11 +102,11 @@ def login_success(username):
             register()
             break
         elif choice == "2":
-            login_success_update(username)
+            login_success_update(cur_user)
             break
         else:
             print("输入错误")
-            login_success(username)
+            login_success(cur_user)
             break
 
 
