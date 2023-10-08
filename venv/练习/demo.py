@@ -82,17 +82,17 @@ def login():
     with open("account.txt", "r", encoding="utf-8") as f:
         lines = f.readlines()
 
-    for line in lines:
+    for i, line in enumerate(lines):
         user = eval(line)
         if user["username"] == username and user["password"] == password:
             print("登录成功 \n欢迎%s进入系统" % username)
-            login_success()
+            login_success(username)
             break
     else:
         print("用户名或密码错误")
 
 
-def login_success():
+def login_success(username):
     print("0.退出登录\n1.返回用户注册\n2.修改密码")
     choice = input("请输入编号: ")
     while True:
@@ -102,17 +102,16 @@ def login_success():
             register()
             break
         elif choice == "2":
-            login_success_update()
+            login_success_update(username)
             break
         else:
             print("输入错误")
-            login_success()
+            login_success(username)
             break
 
 
-def login_success_update():
+def login_success_update(username):
     print("欢迎进入修改密码程序")
-    username = input("请输入用户名: ")
     old_pass = input("请输入旧密码: ")
     new_pass = input("请输入新密码: ")
 
