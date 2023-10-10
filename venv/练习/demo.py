@@ -51,15 +51,22 @@ def store_user_info(user_info):
 
 def register():
     print("欢迎来到注册程序")
+
+    print("用户名只能包含大小写字母和数字，且不能以数字开头")
     username = input("请输入用户名: ").strip()
     if not is_val_username(username):
         return None
+
+    print("密码长度必须在6~15位之间")
     password = input("请输入密码: ").strip()
     if not is_val_password(password):
         return None
+
+    print("按照标准的国内手机号码规则进行校验")
     phone = input("请输入手机号: ").strip()
     if not is_val_phone_number(phone):
         return None
+
     user_info = {
         "username": username,
         "password": password,

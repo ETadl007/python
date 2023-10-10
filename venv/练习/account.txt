@@ -2,3 +2,5 @@
 {'username': 'admin', 'password': '654321wa', 'phone': '18174990393'}
 {'username': 'adminu320', 'password': '123456da', 'phone': '18174990393'}
 {'username': 'user1', 'password': '123456', 'phone': '18174990396'}
+{'username': 'w12345', 'password': '123456', 'phone': '18777632548'}
+{'username': 'abc123', 'password': '123456', 'phone': '13549857541'}
