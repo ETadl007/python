@@ -115,14 +115,14 @@ def login():
 
 def login_success(cur_user):
     print("0.退出登录\n1.返回用户注册\n2.修改密码")
-    choice = input("请输入编号: ")
+    close = input("请输入编号: ")
     while True:
-        if choice == "0":
+        if close == "0":
             break
-        elif choice == "1":
+        elif close == "1":
             register()
             break
-        elif choice == "2":
+        elif close == "2":
             login_success_update(cur_user)
             break
         else:
