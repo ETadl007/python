@@ -87,11 +87,8 @@ def is_dic(result):
 def get_user_info(username):
     cursor.execute(sql_list.select(), username)
     result = cursor.fetchone()
-    _is_dic(result) # 处理返回的信息
+    is_dic(result) # 处理返回的信息
     return result
-
-
-# db.close()
 
 def update_phone(phone):
     cursor.execute(sql_list.update_phone(), phone)

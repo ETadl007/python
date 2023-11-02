@@ -148,7 +148,9 @@ def update_username(cur_user):
 def update_phone(cur_user):
     print("欢迎进入修改手机号程序")
     this_phone = dbs.get_user_info(cur_user)
-    print(f"请使用此手机号进行验证：{this_phone[1]}")
+    res = dbs.is_dic(this_phone) # 隐藏手机号中间四位
+    phone = res['phone'].replace(res['phone'][3:7], '****')
+    print(f"请使用此手机号进行验证：{phone}")
 
     old_phone = input("请输入旧的手机号：")
     new_phone = input("请输入新的手机号: ")
@@ -181,10 +183,10 @@ def show_account(this_user):
     account = dbs.get_user_info(this_user)
     res = dbs.is_dic(account)
     info = copy.copy(res) #拷贝一份用户信息，不然退出的时候会失败
-
     # 隐藏密码和手机号
     p = res['password'].replace(res['password'],'**********')
     phone = res['phone'].replace(res['phone'][3:7], '****')
+
     print(f"用户名: {res['username']}\n手机号：{phone}\n密码：{p}")
     print("0.退出")
     close = input("请输入编号: ")
