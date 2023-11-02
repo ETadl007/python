@@ -1,5 +1,4 @@
 import re
-import os
 from venv.login.mysql import dbs
 
 
@@ -175,15 +174,23 @@ def login_success_update(username):
     }
     dbs.update_password(info)
 
-
+import copy
+# 查看用户信息
 def show_account(this_user):
     print("欢迎进入查看个人信息程序")
     account = dbs.get_user_info(this_user)
-    print(f"用户名: {account[0]}\n手机号：{account[1]}")
+    res = dbs._is_dic(account)
+    info = copy.copy(res) #拷贝一份用户信息，不然退出的时候会失败
+
+    # 隐藏密码和手机号
+    p = res['password'].replace(res['password'],'**********')
+    phone = res['phone'].replace(res['phone'][3:7], '****')
+    print(f"用户名: {res['username']}\n手机号：{phone}\n密码：{p}")
     print("0.退出")
     close = input("请输入编号: ")
     while True:
         if close == "0":
+            dbs.is_login(info)
             break
         else:
             print("输入错误")

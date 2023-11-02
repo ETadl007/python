@@ -75,9 +75,20 @@ def delete_user(username):
         print("用户删除失败")
 
 
+
+def _is_dic(result):
+    dic = {
+        'id':result[0],
+        'username':result[1],
+        'password':result[2],
+        'phone':result[3]
+    }
+    return dic
+
 def get_user_info(username):
     cursor.execute(sql_list.select(), username)
     result = cursor.fetchone()
+    _is_dic(result) # 处理返回的信息
     return result
 
 
