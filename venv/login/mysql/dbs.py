@@ -13,7 +13,6 @@ config = {
 db = pymysql.connect(**config)
 cursor = db.cursor()
 
-
 def insert(user_info):
     cursor.execute(sql_list.insert(), user_info)
     result = cursor.rowcount
