@@ -179,7 +179,7 @@ import copy
 def show_account(this_user):
     print("欢迎进入查看个人信息程序")
     account = dbs.get_user_info(this_user)
-    res = dbs._is_dic(account)
+    res = dbs.is_dic(account)
     info = copy.copy(res) #拷贝一份用户信息，不然退出的时候会失败
 
     # 隐藏密码和手机号

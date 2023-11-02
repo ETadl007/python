@@ -48,10 +48,13 @@ def is_exit(is_val):
 
 
 def store_user_info(user_info):
-    with open("account.txt", "a", encoding="utf-8") as f:
-        f.write(str(user_info) + "\n")
-        print('注册成功')
-        f.close()
+    try:
+        with open("account.txt", "a", encoding="utf-8") as f:
+            f.write(str(user_info) + "\n")
+            print('注册成功')
+            f.close()
+    except Exception as e:
+        print("请检查文件是否存在")
     return False
 
 
@@ -100,17 +103,20 @@ def login():
     password = input("请输入密码: ").strip()
     if not is_exit(password):
         return None
-    with open("account.txt", "r", encoding="utf-8") as f:
-        lines = f.readlines()
+    try:
+        with open("account.txt", "r", encoding="utf-8") as f:
+            lines = f.readlines()
 
-    for i, line in enumerate(lines):
-        user = eval(line)
-        if user["username"] == username and user["password"] == password:
-            print("登录成功 \n欢迎%s进入系统" % username)
-            login_success(username)
-            break
-    else:
-        print("用户名或密码错误")
+        for i, line in enumerate(lines):
+            user = eval(line)
+            if user["username"] == username and user["password"] == password:
+                print("登录成功 \n欢迎%s进入系统" % username)
+                login_success(username)
+                break
+        else:
+            print("用户名或密码错误")
+    except Exception as e:
+        print("文件错误")
 
 
 def login_success(cur_user):

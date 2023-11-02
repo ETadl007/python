@@ -75,7 +75,7 @@ def delete_user(username):
 
 
 
-def _is_dic(result):
+def is_dic(result):
     dic = {
         'id':result[0],
         'username':result[1],
