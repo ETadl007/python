@@ -5,31 +5,27 @@ from venv.login.mysql import dbs
 def is_val_username(username):
     if not (5 <= len(username) <= 12):
         print("用户名长度必须在5-12位之间")
-        register()
-        return False
+        return True
     if not username[0].isalpha():
         print("用户名只能包含大小写字母和数字，且不能以数字开头")
-        register()
-        return False
-    return True
+        return True
+    return False
 
 
 def is_val_password(password):
     if not (6 <= len(password) <= 15) or re.match(r'[^0-9a-zA-Z]', password):
         print("密码长度必须在6~15位之间")
-        register()
-        return False
+        return True
 
-    return True
+    return False
 
 
 def is_val_phone_number(phone):
     if not re.match(r'^1[3-9]\d{9}$', phone):
         print("手机号格式不正确")
-        register()
-        return False
+        return True
 
-    return True
+    return False
 
 
 # 判断用户是否存在
@@ -57,22 +53,25 @@ def register():
     username = input("请输入用户名: ").strip()
     if not is_exit(username):
         return None
-    if not is_val_username(username):
-        return None
+    while is_val_username(username):
+        username = input("请输入用户名: ").strip()
+        break
 
     print("密码长度必须在6~15位之间")
     password = input("请输入密码: ").strip()
     if not is_exit(password):
         return None
-    if not is_val_password(password):
-        return None
+    while is_val_password(password):
+        password = input("请输入密码: ").strip()
+        break
 
     print("按照标准的国内手机号码规则进行校验")
     phone = input("请输入手机号: ").strip()
     if not is_exit(phone):
         return None
-    if not is_val_phone_number(phone):
-        return None
+    while is_val_phone_number(phone):
+        phone = input("请输入手机号: ").strip()
+        break
 
     user_info = {
         'username': username,
@@ -136,28 +135,33 @@ def login_success(cur_user):
 def update_username(cur_user):
     print("欢迎进入修改用户名程序")
     new_name = input("请输入新的用户名: ")
-    if not is_val_username(new_name):
-        return None
+    while is_val_username(new_name) or is_user_exists(new_name):
+        new_name = input("请输入新的用户名: ")
+        break
     info = {
         "new_name": new_name,
-        "old_name": cur_user
+        "old_name": cur_user["username"]
     }
     dbs.update_user(info)
 
 
 def update_phone(cur_user):
     print("欢迎进入修改手机号程序")
-    this_phone = dbs.get_user_info(cur_user)
+    this_phone = dbs.get_user_info(cur_user['username'])
     res = dbs.is_dic(this_phone) # 隐藏手机号中间四位
     phone = res['phone'].replace(res['phone'][3:7], '****')
     print(f"请使用此手机号进行验证：{phone}")
 
     old_phone = input("请输入旧的手机号：")
+    while is_val_phone_number(old_phone):
+        old_phone = input("请输入旧的手机号: ")
+        break
     new_phone = input("请输入新的手机号: ")
-    if not is_val_phone_number(new_phone):
-        return None
+    while is_val_phone_number(new_phone):
+        new_phone = input("请输入新的手机号: ")
+        break
     info = {
-        "username": cur_user,
+        "username": cur_user['username'],
         "new_phone": new_phone,
         "old_phone": old_phone
     }
@@ -168,9 +172,12 @@ def login_success_update(username):
     print("欢迎进入修改密码程序")
     old_pass = input("请输入旧密码: ")
     new_pass = input("请输入新密码: ")
+    while is_val_password(new_pass) or is_val_password(old_pass) and is_val_password(new_pass):
+        new_pass = input("请输入密码: ").strip()
+        break
 
     info = {
-        "username": username,
+        "username": username['username'],
         "new_password": new_pass,
         "old_password": old_pass
     }
@@ -180,7 +187,7 @@ import copy
 # 查看用户信息
 def show_account(this_user):
     print("欢迎进入查看个人信息程序")
-    account = dbs.get_user_info(this_user)
+    account = dbs.get_user_info(this_user['username'])
     res = dbs.is_dic(account)
     info = copy.copy(res) #拷贝一份用户信息，不然退出的时候会失败
     # 隐藏密码和手机号
@@ -206,7 +213,7 @@ def delete(cur_user):
         print("确定注销用户？请输入'y'继续执行操作：")
         d = input()
         if d == 'y':
-            dbs.delete_user(cur_user)
+            dbs.delete_user(cur_user['username'])
     else:
         print("取消用户注销")
 
