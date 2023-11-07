@@ -13,7 +13,7 @@ config = {
 db = pymysql.connect(**config)
 cursor = db.cursor()
 def insert(user_info):
-    cursor.execute(sql_list.insert(), user_info)
+    cursor.execute(sql_list.insert, user_info)
     result = cursor.rowcount
     if result == 1:
         print("注册成功")
@@ -21,14 +21,14 @@ def insert(user_info):
         print("有误")
     db.commit()
 def is_user_exists(username):
-    cursor.execute(sql_list.select(), username)
+    cursor.execute(sql_list.select, username)
     result = cursor.rowcount
     if result == 1:
         print("用户名已存在")
         return True
 
 def is_login(user_info):
-    cursor.execute(sql_list.login(), user_info)
+    cursor.execute(sql_list.login, user_info)
     result = cursor.fetchone()
     if result:
         print("登录成功 \n欢迎%s进入系统" % user_info["username"])
@@ -39,7 +39,7 @@ def is_login(user_info):
 
 
 def update_user(new_name):
-    cursor.execute(sql_list.update_username(), new_name)
+    cursor.execute(sql_list.update_username, new_name)
     result = cursor.rowcount
     if result == 1:
         print("用户信息修改成功，请重新登录")
@@ -50,7 +50,7 @@ def update_user(new_name):
 
 
 def update_password(user_info):
-    cursor.execute(sql_list.update(), user_info)
+    cursor.execute(sql_list.update, user_info)
     result = cursor.rowcount
     if result == 1:
         print("密码修改成功，请重新登录")
@@ -61,7 +61,7 @@ def update_password(user_info):
 
 
 def delete_user(username):
-    cursor.execute(sql_list.log_off(), username)
+    cursor.execute(sql_list.log_off, username)
     result = cursor.rowcount
     if result == 1:
         print("用户删除成功")
@@ -80,13 +80,13 @@ def is_dic(result):
     return dic
 
 def get_user_info(username):
-    cursor.execute(sql_list.select(), username)
+    cursor.execute(sql_list.select, username)
     result = cursor.fetchone()
     is_dic(result) # 处理返回的信息
     return result
 
 def update_phone(phone):
-    cursor.execute(sql_list.update_phone(), phone)
+    cursor.execute(sql_list.update_phone, phone)
     result = cursor.rowcount
     if result == 1:
         print("手机号修改成功，请重新登录")
