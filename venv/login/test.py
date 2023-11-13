@@ -208,14 +208,19 @@ def show_account(this_user):
 
 
 def delete(cur_user):
-    is_continue = input("您是否注销此用户  ---请输入'y/n'执行操作")
+    print(cur_user)
+    is_continue = input("您是否注销此用户  ---请输入'y/n'执行操作：")
     if is_continue == 'y':
         print("确定注销用户？请输入'y'继续执行操作：")
         d = input()
         if d == 'y':
-            dbs.delete_user(cur_user['username'])
+            dbs.delete_user(cur_user)
+        else:
+            print("输入错误")
+            dbs.is_login(cur_user)
     else:
         print("取消用户注销")
+        dbs.is_login(cur_user)
 
 
 if __name__ == "__main__":

@@ -61,11 +61,11 @@ def update_password(user_info):
 
 
 def delete_user(username):
-    cursor.execute(sql_list.log_off, username)
+    cursor.execute(sql_list.log_off, username['username'])
     result = cursor.rowcount
     if result == 1:
         print("用户删除成功")
-        test.login()
+        test.register()
     else:
         print("用户删除失败")
 
@@ -88,9 +88,13 @@ def get_user_info(username):
 def update_phone(phone):
     cursor.execute(sql_list.update_phone, phone)
     result = cursor.rowcount
+
+    cursor.execute('select * from account') # 查询当前用户信息
+    res = cursor.fetchone()
+
     if result == 1:
-        print("手机号修改成功，请重新登录")
-        test.login()
+        print("手机号修改成功")
+        test.login_success(is_dic(res))
     else:
         print("手机号修改失败")
-        test.login()
+        test.login_success(is_dic(res))
