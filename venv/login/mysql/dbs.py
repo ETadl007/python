@@ -26,13 +26,18 @@ def is_user_exists(username):
     if result == 1:
         print("用户名已存在")
         return True
-
+def is_phone_exists(phone):
+    cursor.execute(sql_list.show_phone, phone)
+    result = cursor.rowcount
+    if result == 1:
+        print("手机号已存在")
+        return True
 def is_login(user_info):
     cursor.execute(sql_list.login, user_info)
     result = cursor.fetchone()
     if result:
         print("登录成功 \n欢迎%s进入系统" % user_info["username"])
-        test.login_success(user_info)
+        test.login_success(is_dic(result))
     else:
         print("用户名或密码错误")
         test.login()
@@ -42,11 +47,11 @@ def update_user(new_name):
     cursor.execute(sql_list.update_username, new_name)
     result = cursor.rowcount
     if result == 1:
-        print("用户信息修改成功，请重新登录")
+        print("用户名修改成功，请重新登录")
         test.login()
     else:
-        print("用户信息修改失败")
-        test.login()
+        print("用户名修改失败")
+        test.login_success(is_dic(new_name))
 
 
 def update_password(user_info):

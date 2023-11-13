@@ -35,6 +35,12 @@ def is_user_exists(user_val):
     return False
 
 
+def is_phone_exists(phone):
+    if dbs.is_phone_exists(phone):
+        return True
+    return False
+
+
 def is_exit(is_val):
     if is_val == 'q':
         return False
@@ -69,6 +75,8 @@ def register():
     phone = input("请输入手机号: ").strip()
     if not is_exit(phone):
         return None
+    if is_phone_exists(phone):
+        phone = input("请输入手机号: ").strip()
     while is_val_phone_number(phone):
         phone = input("请输入手机号: ").strip()
         break
@@ -82,7 +90,6 @@ def register():
     if is_user_exists(username):
         register()
         return
-
     store = store_user_info(user_info)
     return store
 
@@ -139,8 +146,11 @@ def update_username(cur_user):
         new_name = input("请输入新的用户名: ")
         break
     info = {
+        "id": cur_user['id'],
         "new_name": new_name,
-        "old_name": cur_user["username"]
+        "old_name": cur_user['username'],
+        "password":cur_user['password'],
+        "phone":cur_user['phone']
     }
     dbs.update_user(info)
 
@@ -186,6 +196,7 @@ def login_success_update(username):
 import copy
 # 查看用户信息
 def show_account(this_user):
+    print(this_user)
     print("欢迎进入查看个人信息程序")
     account = dbs.get_user_info(this_user['username'])
     res = dbs.is_dic(account)
