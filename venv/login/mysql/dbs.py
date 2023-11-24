@@ -17,6 +17,7 @@ def insert(user_info):
     result = cursor.rowcount
     if result == 1:
         print("注册成功")
+        test.system()
     else:
         print("有误")
     db.commit()
@@ -70,7 +71,7 @@ def delete_user(username):
     result = cursor.rowcount
     if result == 1:
         print("用户删除成功")
-        test.register()
+        test.system()
     else:
         print("用户删除失败")
 

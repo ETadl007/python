@@ -196,7 +196,6 @@ def login_success_update(username):
 import copy
 # 查看用户信息
 def show_account(this_user):
-    print(this_user)
     print("欢迎进入查看个人信息程序")
     account = dbs.get_user_info(this_user['username'])
     res = dbs.is_dic(account)
@@ -219,7 +218,6 @@ def show_account(this_user):
 
 
 def delete(cur_user):
-    print(cur_user)
     is_continue = input("您是否注销此用户  ---请输入'y/n'执行操作：")
     if is_continue == 'y':
         print("确定注销用户？请输入'y'继续执行操作：")
@@ -234,21 +232,24 @@ def delete(cur_user):
         dbs.is_login(cur_user)
 
 
-if __name__ == "__main__":
+
+def system():
+    print("欢迎进入用户管理系统")
+    print("0.退出\n1.选择用户注册\n2.选择用户登录")
+    choice = input("请输入编号: ")
     while True:
-        print("欢迎进入用户管理系统")
-        print("0.退出\n1.选择用户注册\n2.选择用户登录")
-        choice = input("请输入编号: ")
-        while True:
-            if choice == "0":
-                print("退出成功")
-                exit(0)
-            elif choice == "1":
-                register()
-                break
-            elif choice == "2":
-                login()
-                break
-            else:
-                print("输入有误")
-                break
+        if choice == "0":
+            print("退出成功")
+            exit(0)
+        elif choice == "1":
+            register()
+            break
+        elif choice == "2":
+            login()
+            break
+        else:
+            print("输入有误")
+            break
+
+if __name__ == "__main__":
+    system()
